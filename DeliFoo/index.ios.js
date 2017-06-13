@@ -10,12 +10,8 @@ import { createStore, applyMiddleware, combineReduxers, compose } from 'redux';
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger }  from 'redux-logger';
 import reducer from './src/reducers';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { AppRegistry } from 'react-native';
+import AppContainer from './src/containers/AppContainer'
 
 const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__});
 
@@ -31,21 +27,9 @@ function configureStore(initialState) {
 
 const store = configureStore({});
 
-export default class DeliFoo extends Component {
-  render() {
-    return (
-      <View>
-        <Text>
-          Welcome to React Native!
-        </Text>
-      </View>
-    );
-  }
-}
-
 const App = () => (
   <Provider store={store}>
-    <DeliFoo />
+    <AppContainer />
   </Provider>
 );
 
