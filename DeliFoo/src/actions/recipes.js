@@ -2,21 +2,15 @@ import * as types from './types'
 import Api from '../lib/api'
 
 export function fetchRecipes(ingredients) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const params = [
-      `ingredients=${encodeURIComponent(ingredients)}`,
-      'fillIngredients=false',
-      'limitLicense=false',
-      'number=20',
-      'ranking=1'
-    ].join('&');
-    console.log(params);
-
-    return Api.get(`/recipes/findByIngredients?${params}`).then(
-      res => {
-        console.log(res);
-      }).catch((ex) => {
-        console.log(ex);
-      })
+      `i=${encodeURIComponent(ingredients)}`,
+      'p=2'
+    ].join('&')
+    return Api.get(`/api/?${params}`).then(resp => {
+      console.log(resp);
+    }).catch( (ex) => {
+      console.log(ex);
+    });
   }
 }

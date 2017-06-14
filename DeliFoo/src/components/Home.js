@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   View,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native'
 
 class Home extends React.Component {
@@ -14,10 +15,17 @@ class Home extends React.Component {
     }
   }
 
+  searchPressed(){
+    this.props.fetchRecipes('bacon,cucumber,banana');
+  }
+
   render(){
+    console.log(this.props);
     return (
       <View>
+        <TouchableOpacity onPress={() => this.searchPressed()}>
         <Text style={{margin: 20}}>Home</Text>
+        </TouchableOpacity>
       </View>
     )
   }
