@@ -2,23 +2,16 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
-import {
-  Text,
-  View
-} from 'react-native'
+import Home from '../components/Home'
 
 class AppContainer extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
     return (
-      <View>
-        <Text style={{margin: 20}}>
-          I am am App container
-        </Text>
-      </View>
+      <Home {...this.props}/>
     )
   }
 }
