@@ -5,12 +5,20 @@ export function fetchRecipes(ingredients) {
   return (dispatch, getState) => {
     const params = [
       `i=${encodeURIComponent(ingredients)}`,
-      'p=2'
+      'p=1'
     ].join('&')
     return Api.get(`/api/?${params}`).then(resp => {
+      dispatch(fetchRecipesSuccess(resp));
       console.log(resp);
     }).catch( (ex) => {
       console.log(ex);
     });
+  }
+}
+
+function fetchRecipesSuccess(recipes){
+  return {
+    type: types.FETCH_RECIPES_SUCCESS,
+    payload: recipes
   }
 }

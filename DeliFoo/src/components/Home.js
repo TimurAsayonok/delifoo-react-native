@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native'
 
 class Home extends React.Component {
@@ -23,9 +24,13 @@ class Home extends React.Component {
     console.log(this.props);
     return (
       <View>
-        <TouchableOpacity onPress={() => this.searchPressed()}>
-        <Text style={{margin: 20}}>Home</Text>
-        </TouchableOpacity>
+        <View style={{marginTop: 20}}>
+          <TouchableOpacity onPress={() => this.searchPressed()}>
+          <Text>Search Recipes</Text>
+          </TouchableOpacity>
+        </View>
+        <ScrollView>
+        </ScrollView>
       </View>
     )
   }
