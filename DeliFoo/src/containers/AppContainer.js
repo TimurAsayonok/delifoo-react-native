@@ -20,4 +20,10 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators(ActionCreators ,dispatch);
 }
 
-export default connect(() => {return {}}, mapDispatchToProps)(AppContainer);
+function mapStateToProps(state){
+  return {
+    recipes: state.searchedRecipes
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

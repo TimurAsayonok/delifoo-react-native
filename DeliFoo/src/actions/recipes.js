@@ -9,7 +9,6 @@ export function fetchRecipes(ingredients) {
     ].join('&')
     return Api.get(`/api/?${params}`).then(resp => {
       dispatch(fetchRecipesSuccess(resp));
-      console.log(resp);
     }).catch( (ex) => {
       console.log(ex);
     });
