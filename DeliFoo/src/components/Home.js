@@ -49,8 +49,7 @@ class Home extends React.Component {
         </View>
         <ScrollView style={styles.scrollSection}>
           {!this.state.isSearching && this.getRecipes().map((recipe) => {
-            let i = 0;
-            return <View style={styles.recipeSection}>
+            return <View style={styles.recipeSection} key={recipe.title}>
               <Image source={{uri: recipe.thumbnail}} style={styles.image} />
               <Text style={styles.title}>{recipe.title}</Text>
               <Text style={styles.ingredients}>{recipe.ingredients}</Text>
