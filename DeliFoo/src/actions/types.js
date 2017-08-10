@@ -4,3 +4,6 @@ export const FETCH_RECIPES_ERROR = 'FETCH_RECIPES_ERROR';
 
 export const SET_SEARCHED_RECIPES = 'SET_SEARCHED_RECIPES';
 export const ADD_RECIPE = 'ADD_RECIPE';
+
+//navigation
+export const SET_TAB = 'SET_TAB'; 

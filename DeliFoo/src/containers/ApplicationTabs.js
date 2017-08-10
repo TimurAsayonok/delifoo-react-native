@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import {View, TabBarIOS, TabBarItemIOS} from 'react-native'
+import {View, TabBarIOS} from 'react-native'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { ActionCreators } from '../actions'
 import Home from '../components/Home'
+import Contacts from './Contacts'
 
 class ApplicationTabs extends React.Component {
   constructor(props) {
@@ -11,35 +10,44 @@ class ApplicationTabs extends React.Component {
   }
 
   renderScene(component){
-    return(
-      <View style={{flex:1}}>
-        {React.createElement(component, this.props)} //we should use React.createElement for creating Component using our class
+    return<View style={{flex:1}}>
+        {React.createElement(component, this.props)}
       </View>
-    )
+  }
+
+  onPress(index){
+    this.props.setTab(index);
   }
 
   render() {
+    console.log(this.props);
     return (
       <TabBarIOS style={{flex:1}}>
-        <TabBarIOS.Item systemIcon="favorites" iconSize={25}>
-          {this.renderScene(Home)} //Home is class, isn't component
+        <TabBarIOS.Item
+          selected={this.props.tabs.index === 0}
+          onPress={ () => {this.onPress(0)}}
+          systemIcon="favorites"
+          title="Home"
+          iconSize={25}>
+          {this.renderScene(Home)}
         </TabBarIOS.Item>
-        <TabBarIOS.Item systemIcon="contacts" iconSize={25}>
-          {this.renderScene(Home)} //Home is class, isn't component
+        <TabBarIOS.Item
+          onPress={ () => {this.onPress(1)}}
+          selected={this.props.tabs.index === 1}
+          systemIcon="contacts"
+          title="Contacts"
+          iconSize={25}>
+          {this.renderScene(Contacts)}
         </TabBarIOS.Item>
       </TabBarIOS>
     )
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators(ActionCreators ,dispatch);
-}
-
 function mapStateToProps(state){
   return {
-    recipes: state.searchedRecipes
+    tabs: state.tabs
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ApplicationTabs);
+export default connect(mapStateToProps)(ApplicationTabs);
