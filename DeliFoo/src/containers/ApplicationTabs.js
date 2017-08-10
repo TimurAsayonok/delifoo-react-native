@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, TabBarIOS} from 'react-native'
 import { connect } from 'react-redux'
 import Home from '../components/Home'
-import Contacts from './Contacts'
+import Contacts from '../components/Contacts'
 
 class ApplicationTabs extends React.Component {
   constructor(props) {
