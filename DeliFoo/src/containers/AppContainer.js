@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
-import Home from '../components/Home'
+import ApplicationTabs from './ApplicationTabs'
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class AppContainer extends React.Component {
 
   render() {
     return (
-      <Home {...this.props}/>
+      <ApplicationTabs {...this.props} />
     )
   }
 }
