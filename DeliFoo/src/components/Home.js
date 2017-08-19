@@ -5,6 +5,7 @@ import {
   View,
   Text,
   TextInput,
+  TouchableHighlight,
   TouchableOpacity,
   ScrollView,
   StyleSheet
@@ -49,10 +50,14 @@ class Home extends React.Component {
         </View>
         <ScrollView style={styles.scrollSection}>
           {!this.state.isSearching && this.getRecipes().map((recipe) => {
-            return <View style={styles.recipeSection} key={recipe.title}>
-              <Image source={{uri: recipe.thumbnail}} style={styles.image} />
-              <Text style={styles.title}>{recipe.title}</Text>
-            </View>
+            return <TouchableHighlight 
+            onPress={() => this.props.navigate({key: 'Detail', recipe: recipe})}
+            key={recipe.title}>
+              <View>
+                <Image source={{ uri: recipe.thumbnail }} style={styles.image} />
+                <Text style={styles.title}>{recipe.title}</Text>
+              </View>
+            </TouchableHighlight>
           })}
           {this.state.isSearching ? <Text>Searching ...</Text> : null}
         </ScrollView>

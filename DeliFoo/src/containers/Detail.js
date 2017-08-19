@@ -7,6 +7,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  TouchableHighlight,
   ScrollView,
   StyleSheet
 } from 'react-native'
@@ -17,10 +18,15 @@ class Detail extends Component {
   }
 
   render(){
-    console.log(this.props);
-
+    const { recipe } = this.props.navigationParams;
+    console.log(this.props)
     return (
-      <View style={{margin: 40}}>
+      <View>
+        <TouchableHighlight 
+          style={{flex: 1, paddingVertical: 20, backgroundColor: '#222'}} 
+          onPress={ () => {this.props.navigationBack()}}>
+          <Text style={{color:'#fff'}}>Back</Text>
+        </TouchableHighlight>
         <Text>Detail</Text>
       </View>
     )
@@ -30,8 +36,12 @@ class Detail extends Component {
 
 function mapStateToProps(state) {
   return{
-
+    navigationParams: state.navigationParams,
   }
 }
 
-export default connect(mapStateToProps)(Detail);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ActionCreators, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);
