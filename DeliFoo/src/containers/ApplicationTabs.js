@@ -30,7 +30,7 @@ class ApplicationTabs extends React.Component {
           onPress={ () => {this.onPress(0)}}
           systemIcon="favorites"
           title="Home"
-          iconSize={25}>
+          iconSize={20}>
           {this.renderScene(Home)}
         </TabBarIOS.Item>
         <TabBarIOS.Item
@@ -38,7 +38,7 @@ class ApplicationTabs extends React.Component {
           selected={this.props.tabs.index === 1}
           systemIcon="contacts"
           title="Contacts"
-          iconSize={25}>
+          iconSize={20}>
           {this.renderScene(Contacts)}
         </TabBarIOS.Item>
       </TabBarIOS>
