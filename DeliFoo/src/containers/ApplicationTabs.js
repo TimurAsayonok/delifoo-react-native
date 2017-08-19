@@ -3,6 +3,8 @@ import {View, TabBarIOS} from 'react-native'
 import { connect } from 'react-redux'
 import Home from '../components/Home'
 import Contacts from '../components/Contacts'
+import { bindActionCreators } from 'redux'
+import { ActionCreators } from '../actions'
 
 class ApplicationTabs extends React.Component {
   constructor(props) {
@@ -46,8 +48,13 @@ class ApplicationTabs extends React.Component {
 
 function mapStateToProps(state){
   return {
-    tabs: state.tabs
+    tabs: state.tabs,
+    recipes: state.searchedRecipes
   }
 }
 
-export default connect(mapStateToProps)(ApplicationTabs);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ActionCreators, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationTabs);

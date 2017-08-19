@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { ActionCreators } from '../actions'
 import {
   Image,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   ScrollView,
   StyleSheet
 } from 'react-native'
 
-class Contacts extends Component {
+class Detail extends Component {
   constructor(props) {
     super(props)
   }
@@ -20,7 +21,7 @@ class Contacts extends Component {
 
     return (
       <View style={{margin: 40}}>
-        <Text>Hello</Text>
+        <Text>Detail</Text>
       </View>
     )
   }
@@ -33,4 +34,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Contacts);
+export default connect(mapStateToProps)(Detail);

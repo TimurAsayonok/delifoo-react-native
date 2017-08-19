@@ -10,3 +10,24 @@ export function setTab(tabIndex){
     dispatch(Object.assign({type: types.SET_TAB}, jumpToIndex(tabs, tabIndex)));
   }
 }
+
+export function navigate(action){
+  return (dispatch, getState) => {
+    dispatch(navigateForward(action));
+  }
+}
+
+export function navigateForward(state) {
+  return {
+    type: types.NAVIGATION_FORWARD,
+    state
+  }
+}
+
+export function navigationBack() {
+  return (dispatch, getState) => {
+    dispatch({
+      type: types.NAVIGATION_BACK
+    })
+  }
+}

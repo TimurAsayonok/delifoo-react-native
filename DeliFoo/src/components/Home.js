@@ -52,7 +52,6 @@ class Home extends React.Component {
             return <View style={styles.recipeSection} key={recipe.title}>
               <Image source={{uri: recipe.thumbnail}} style={styles.image} />
               <Text style={styles.title}>{recipe.title}</Text>
-              <Text style={styles.ingredients}>{recipe.ingredients}</Text>
             </View>
           })}
           {this.state.isSearching ? <Text>Searching ...</Text> : null}
